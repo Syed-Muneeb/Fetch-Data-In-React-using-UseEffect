@@ -1,24 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import {useEffect} from 'react'
 
 function App() {
+
+  let [data,setData] = useState({title : "waiting for response"})
+  let [isFetching,setFetching] = useState(false);
+
+  useEffect(()=>{
+
+    async function fetchData(){
+
+        setFetching(true);
+        const response = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+        console.log(response);
+
+        const json = await response.json();
+        setFetching(false);
+        console.log(json);
+        setData(json)
+  }
+
+      fetchData();
+
+  },[data.title])
+
+  if(isFetching){
+
+      return <div> Data is Loading .....</div>
+            
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+          fetch Title : {data.title}  
     </div>
   );
 }
