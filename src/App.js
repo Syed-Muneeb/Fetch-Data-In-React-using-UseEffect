@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import {useEffect} from 'react'
+import Reddit from './hello';
+
 
 function App() {
 
@@ -27,12 +29,15 @@ function App() {
   if(isFetching){
 
       return <div> Data is Loading .....</div>
-            
+    
   }
+
 
   return (
     <div>
           fetch Title : {data.title}  
+
+          <Reddit subReddit="reactjs"/>
     </div>
   );
 }
