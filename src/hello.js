@@ -22,7 +22,7 @@ function Reddit({subReddit}){
 
         Fetchdata();
 
-    },[setposts]);
+    },[setposts,subReddit]);
 
     console.log(posts);
 

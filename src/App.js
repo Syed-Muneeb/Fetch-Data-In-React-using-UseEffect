@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import {useEffect} from 'react'
 import Reddit from './hello';
 
+import Example from './example';
+import './App.css'
+import Form from './form';
+
 
 function App() {
 
@@ -34,10 +38,16 @@ function App() {
 
 
   return (
-    <div>
+    <div className="App">
           fetch Title : {data.title}  
 
           <Reddit subReddit="reactjs"/>
+
+        Example with form input
+          <Form/>
+          <h2> another example</h2>
+          <Example/>
+
     </div>
   );
 }
